@@ -25,7 +25,8 @@ class MainActivity : ComponentActivity() {
             MainActivityView(
                 toConstraint = { startActivityChooser(ConstraintLayout()) },
                 toScaffold = { startActivityChooser(Scaffold()) },
-                toCrossFade = { startActivityChooser(CrossFadeAnimation()) })
+                toCrossFade = { startActivityChooser(CrossFadeAnimation()) },
+                toCanvas = { startActivityChooser(Canvas()) })
         }
     }
 
@@ -38,7 +39,7 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun MainActivityPreview() {
-    MainActivityView({}, {}, {})
+    MainActivityView({}, {}, {}, {})
 }
 
 @Composable
@@ -46,6 +47,7 @@ fun MainActivityView(
     toConstraint: () -> Unit,
     toScaffold: () -> Unit,
     toCrossFade: () -> Unit,
+    toCanvas: () -> Unit
 ) {
     Column {
         Row(
@@ -79,6 +81,13 @@ fun MainActivityView(
                     .align(CenterVertically)
             ) {
                 Text(text = "CrossFade\nAnimation")
+            }
+        }
+        Row(modifier = Modifier
+            .padding(top = 15.dp, start = 6.dp, end = 3.dp)
+            .weight(1f)) {
+            Button(onClick = { toCanvas.invoke() }) {
+                Text(text = "Canvas")
             }
         }
     }

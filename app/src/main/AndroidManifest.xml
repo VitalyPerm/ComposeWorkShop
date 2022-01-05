@@ -23,5 +23,6 @@
         <activity android:name=".Scaffold" />
         <activity android:name=".CrossFadeAnimation" />
         <activity android:name=".ConstraintLayout" />
+        <activity android:name=".Canvas" />
     </application>
 </manifest>

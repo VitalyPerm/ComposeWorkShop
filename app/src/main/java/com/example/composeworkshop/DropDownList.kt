@@ -3,6 +3,8 @@ package com.example.composeworkshop
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -24,6 +26,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 
 class DropDownList : ComponentActivity() {
+    @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -69,7 +72,7 @@ class DropDownList : ComponentActivity() {
                         .padding(20.dp)
                         .clickable { expandedSecond = !expandedSecond }
                 )
-                if (expandedSecond) {
+                AnimatedVisibility(visible = expandedSecond) {
                     LazyColumn(modifier = Modifier.fillMaxWidth()) {
                         item { Text(text = "Gintarinis!") }
                         item { Text(text = "Gintarinis!") }
@@ -79,8 +82,7 @@ class DropDownList : ComponentActivity() {
                         item { Text(text = "Gintarinis!") }
                     }
                 }
-
-                Text(
+                                Text(
                     text = "Колонна 3",
                     modifier = Modifier
                         .fillMaxWidth()

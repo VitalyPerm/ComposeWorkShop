@@ -27,5 +27,6 @@
         <activity android:name=".DropDown"/>
         <activity android:name=".DropDownList"/>
         <activity android:name=".AnimationCard"/>
+        <activity android:name=".AnimatedButton"/>
     </application>
 </manifest>

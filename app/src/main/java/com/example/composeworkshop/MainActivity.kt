@@ -27,7 +27,8 @@ class MainActivity : ComponentActivity() {
                 toCanvas = { startActivityChooser(Canvas()) },
                 toDropDown = { startActivityChooser(DropDown()) },
                 toDropDownList = { startActivityChooser(DropDownList()) },
-                toAnimation = { startActivityChooser(AnimationCard()) })
+                toAnimation = { startActivityChooser(AnimationCard()) },
+                toAnimationButton = { startActivityChooser(AnimatedButton()) })
         }
     }
 
@@ -40,7 +41,7 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun MainActivityPreview() {
-    MainActivityView({}, {}, {}, {}, {}, {}, {})
+    MainActivityView({}, {}, {}, {}, {}, {}, {}, {})
 }
 
 @Composable
@@ -51,7 +52,8 @@ fun MainActivityView(
     toCanvas: () -> Unit,
     toDropDown: () -> Unit,
     toDropDownList: () -> Unit,
-    toAnimation: () -> Unit
+    toAnimation: () -> Unit,
+    toAnimationButton: () -> Unit
 ) {
     Column {
         Row(
@@ -90,8 +92,7 @@ fun MainActivityView(
         Row(
             modifier = Modifier
                 .padding(top = 15.dp, start = 6.dp, end = 3.dp)
-                .fillMaxWidth()
-                .weight(1f), horizontalArrangement = Arrangement.SpaceAround
+                .fillMaxWidth(), horizontalArrangement = Arrangement.SpaceAround
         ) {
             Button(onClick = { toCanvas.invoke() }) {
                 Text(text = "Canvas")
@@ -108,11 +109,13 @@ fun MainActivityView(
         Row(
             modifier = Modifier
                 .padding(top = 15.dp, start = 6.dp, end = 3.dp)
-                .fillMaxWidth()
-                .weight(1f), horizontalArrangement = Arrangement.SpaceAround
+                .fillMaxWidth(), horizontalArrangement = Arrangement.SpaceAround
         ) {
             Button(onClick = { toAnimation.invoke() }) {
                 Text(text = "Animation")
+            }
+            Button(onClick = { toAnimationButton.invoke() }) {
+                Text(text = "AnimationButton")
             }
         }
     }

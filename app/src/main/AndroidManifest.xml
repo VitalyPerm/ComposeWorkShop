@@ -24,5 +24,8 @@
         <activity android:name=".CrossFadeAnimation" />
         <activity android:name=".ConstraintLayout" />
         <activity android:name=".Canvas" />
+        <activity android:name=".DropDown"/>
+        <activity android:name=".DropDownList"/>
+        <activity android:name=".AnimationCard"/>
     </application>
 </manifest>

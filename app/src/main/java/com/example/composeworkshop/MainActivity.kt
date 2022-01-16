@@ -2,12 +2,10 @@ package com.example.composeworkshop
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.animation.Animation
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -26,11 +24,14 @@ class MainActivity : ComponentActivity() {
                 toConstraint = { startActivityChooser(ConstraintLayout()) },
                 toScaffold = { startActivityChooser(Scaffold()) },
                 toCrossFade = { startActivityChooser(CrossFadeAnimation()) },
-                toCanvas = { startActivityChooser(Canvas()) })
+                toCanvas = { startActivityChooser(Canvas()) },
+                toDropDown = { startActivityChooser(DropDown()) },
+                toDropDownList = { startActivityChooser(DropDownList()) },
+                toAnimation = { startActivityChooser(AnimationCard()) })
         }
     }
 
-    fun startActivityChooser(activity: ComponentActivity) {
+    private fun startActivityChooser(activity: ComponentActivity) {
         startActivity(Intent(this, activity::class.java))
     }
 }
@@ -39,7 +40,7 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun MainActivityPreview() {
-    MainActivityView({}, {}, {}, {})
+    MainActivityView({}, {}, {}, {}, {}, {}, {})
 }
 
 @Composable
@@ -47,7 +48,10 @@ fun MainActivityView(
     toConstraint: () -> Unit,
     toScaffold: () -> Unit,
     toCrossFade: () -> Unit,
-    toCanvas: () -> Unit
+    toCanvas: () -> Unit,
+    toDropDown: () -> Unit,
+    toDropDownList: () -> Unit,
+    toAnimation: () -> Unit
 ) {
     Column {
         Row(
@@ -83,11 +87,32 @@ fun MainActivityView(
                 Text(text = "CrossFade\nAnimation")
             }
         }
-        Row(modifier = Modifier
-            .padding(top = 15.dp, start = 6.dp, end = 3.dp)
-            .weight(1f)) {
+        Row(
+            modifier = Modifier
+                .padding(top = 15.dp, start = 6.dp, end = 3.dp)
+                .fillMaxWidth()
+                .weight(1f), horizontalArrangement = Arrangement.SpaceAround
+        ) {
             Button(onClick = { toCanvas.invoke() }) {
                 Text(text = "Canvas")
+            }
+
+            Button(onClick = { toDropDown.invoke() }) {
+                Text(text = "DropDown")
+            }
+
+            Button(onClick = { toDropDownList.invoke() }) {
+                Text(text = "DropDownList")
+            }
+        }
+        Row(
+            modifier = Modifier
+                .padding(top = 15.dp, start = 6.dp, end = 3.dp)
+                .fillMaxWidth()
+                .weight(1f), horizontalArrangement = Arrangement.SpaceAround
+        ) {
+            Button(onClick = { toAnimation.invoke() }) {
+                Text(text = "Animation")
             }
         }
     }

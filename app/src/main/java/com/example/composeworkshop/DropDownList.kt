@@ -1,6 +1,8 @@
 package com.example.composeworkshop
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.AnimatedVisibility
@@ -36,7 +38,7 @@ class DropDownList : ComponentActivity() {
             val rotateX = animateFloatAsState(
                 targetValue = if (expandedThird) 0f else -90f,
                 animationSpec = tween(
-                    durationMillis = 300
+                    durationMillis = 1300
                 )
             )
             Column(modifier = Modifier.fillMaxSize()) {
@@ -82,7 +84,7 @@ class DropDownList : ComponentActivity() {
                         item { Text(text = "Gintarinis!") }
                     }
                 }
-                                Text(
+                Text(
                     text = "Колонна 3",
                     modifier = Modifier
                         .fillMaxWidth()
@@ -108,6 +110,26 @@ class DropDownList : ComponentActivity() {
                         item { Text(text = "Gintarinis!") }
                         item { Text(text = "Gintarinis!") }
                         item { Text(text = "Gintarinis!") }
+                    }
+                } else {
+                    if(rotateX.value != -90.0f){
+                        LazyColumn(
+                            modifier = Modifier
+                                .background(Color.Cyan)
+                                .fillMaxWidth()
+                                .graphicsLayer {
+                                    transformOrigin = TransformOrigin(0.5f, 0f)
+                                    rotationX = rotateX.value
+                                    Log.d("TAG__", "${rotateX.value}")
+                                },
+                        ) {
+                            item { Text(text = "Gintarinis!") }
+                            item { Text(text = "Gintarinis!") }
+                            item { Text(text = "Gintarinis!") }
+                            item { Text(text = "Gintarinis!") }
+                            item { Text(text = "Gintarinis!") }
+                            item { Text(text = "Gintarinis!") }
+                        }
                     }
                 }
             }

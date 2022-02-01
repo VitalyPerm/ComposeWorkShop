@@ -28,7 +28,8 @@ class MainActivity : ComponentActivity() {
                 toDropDown = { startActivityChooser(DropDown()) },
                 toDropDownList = { startActivityChooser(DropDownList()) },
                 toAnimation = { startActivityChooser(AnimationCard()) },
-                toAnimationButton = { startActivityChooser(AnimatedButton()) })
+                toAnimationButton = { startActivityChooser(AnimatedButton()) },
+                toCalendar = {startActivityChooser(Calendar())})
         }
     }
 
@@ -41,7 +42,7 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun MainActivityPreview() {
-    MainActivityView({}, {}, {}, {}, {}, {}, {}, {})
+    MainActivityView({}, {}, {}, {}, {}, {}, {}, {}, {})
 }
 
 @Composable
@@ -53,7 +54,8 @@ fun MainActivityView(
     toDropDown: () -> Unit,
     toDropDownList: () -> Unit,
     toAnimation: () -> Unit,
-    toAnimationButton: () -> Unit
+    toAnimationButton: () -> Unit,
+    toCalendar: () -> Unit
 ) {
     Column {
         Row(
@@ -116,6 +118,9 @@ fun MainActivityView(
             }
             Button(onClick = { toAnimationButton.invoke() }) {
                 Text(text = "AnimationButton")
+            }
+            Button(onClick = { toCalendar.invoke() }) {
+                Text(text = "Calendar")
             }
         }
     }

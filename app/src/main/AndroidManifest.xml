@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ComposeWorkShop">
         <activity
-            android:name=".MainActivity"
+            android:name=".Calendar"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.ComposeWorkShop.NoActionBar">
@@ -28,5 +28,6 @@
         <activity android:name=".DropDownList"/>
         <activity android:name=".AnimationCard"/>
         <activity android:name=".AnimatedButton"/>
+        <activity android:name=".MainActivity"/>
     </application>
 </manifest>

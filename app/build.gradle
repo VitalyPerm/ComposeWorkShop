@@ -27,6 +27,8 @@ android {
         }
     }
     compileOptions {
+        //залупа для календаря
+        coreLibraryDesugaringEnabled = true
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -63,4 +65,7 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0-rc02"
+    implementation "io.github.boguszpawlowski.composecalendar:composecalendar:0.3.0"
+    //залупа для календаря
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
 }
